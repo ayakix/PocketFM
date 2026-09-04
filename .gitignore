@@ -1,0 +1,16 @@
+*.iml
+.gradle/
+.idea/
+.kotlin/
+.DS_Store
+# 各モジュール直下の build/ をすべて除外する。ルート限定の /build だと
+# app/build や fm-radio/build が漏れる。
+build/
+/captures
+.externalNativeBuild
+.cxx
+# SDK パスなど環境依存の設定が入る。
+local.properties
+# I/Q キャプチャや書き出した音声。サイズが大きいので入れない。
+*.wav
+*.bin
