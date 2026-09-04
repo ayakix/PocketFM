@@ -2,9 +2,9 @@
 
 RTL-SDR ドングルで FM 放送を受信する Android アプリ。
 
-[PocketRadar](https://github.com/ayakix/PocketRadar) (ADS-B 受信機) の rtl_tcp
-まわりの設計をそのまま流用し、復調部だけ ADS-B の PPM から FM の位相判別に
-差し替えたもの。ハードウェアは PocketRadar と共通。
+USB ドングルから届く生の I/Q サンプルを Kotlin で復調して音を鳴らすところまでを、
+ライブラリに頼らず自前で実装している。ソフトウェア無線の信号処理を
+コードの形で追えるようにするのが狙い。
 
 ## 全体構成
 
@@ -78,7 +78,7 @@ CPU が厳しければ `FmDemodulator` のコンストラクタ引数で 240 kHz
 
 ## ハードウェア
 
-PocketRadar と同一。ただしアンテナは FM 帯 (76–95 MHz) 向けのものが望ましい。
+アンテナは FM 帯 (76–95 MHz) 向けのものを使う。
 
 | 項目 | 内容 |
 |---|---|
