@@ -1,16 +1,38 @@
-*.iml
-.gradle/
-.idea/
-.kotlin/
-.DS_Store
+# --- ビルド生成物 ---------------------------------------------------------
 # 各モジュール直下の build/ をすべて除外する。ルート限定の /build だと
 # app/build や fm-radio/build が漏れる。
 build/
-/captures
-.externalNativeBuild
+.gradle/
+.kotlin/
 .cxx
-# SDK パスなど環境依存の設定が入る。
+.externalNativeBuild
+captures/
+
+# 成果物。build/ の外にコピーされたものも拾う。
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# --- 環境依存・秘密情報 ---------------------------------------------------
+# SDK パスなど、マシンごとに異なる設定。
 local.properties
+
+# リリース署名鍵とそのパスワード。公開リポジトリに入れると
+# アプリを第三者が偽装署名できてしまうため、絶対に追跡しない。
+*.jks
+*.keystore
+keystore.properties
+signing.properties
+
+# --- IDE / OS -------------------------------------------------------------
+.idea/
+*.iml
+.DS_Store
+
+# --- 作業用データ ---------------------------------------------------------
 # I/Q キャプチャや書き出した音声。サイズが大きいので入れない。
-*.wav
+# ただしテスト用フィクスチャは意図して置くものなので除外しない。
 *.bin
+*.wav
+!**/src/test/resources/**
